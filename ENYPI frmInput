@@ -1,0 +1,501 @@
+'Main Input GUI
+
+Private Sub btnCaseInfo_Click()
+
+If txtCase.Value = "" Then
+MsgBox "Please Enter A Case Name"
+Else
+    ActiveSheet.PageSetup.CenterHeader = txtCase
+    txtCaseName.Visible = True
+    txtCaseName.Text = txtCase
+End If
+
+End Sub
+
+Private Sub btnClearPatient_Click()
+
+lstCode.Value = ""
+txtPCRF.Text = ""
+txtTime2.Text = ""
+txtDate2.Text = ""
+txtLocation.Text = ""
+txtAge.Text = ""
+txtSex.Text = ""
+txtIncident.Text = ""
+txtTreatment.Text = ""
+txtPublic.Text
+
+End Sub
+
+Private Sub btnClose_Click()
+
+frmClose.Show
+
+End Sub
+
+
+Private Sub btnClearNotes_Click()
+
+txtTime1.Text = ""
+txtDate1.Text = ""
+txtNotes.Text = ""
+
+End Sub
+
+Private Sub btnCloseGUI_Click()
+
+End
+
+End Sub
+
+Private Sub btnInsert_Click()
+
+Dim LastRow As Long
+i = Sheets("sheet3").Cells(1, 1)
+i = i + 1
+Sheets("Notes").Select
+
+
+'Seeing IF all the values have been entered
+If txtTime1.Value = "" Then
+txtTime1.Value = "Not Recorded"
+ElseIf txtDate1.Value = "" Then
+txtDate1.Value = "Not Recorded"
+ElseIf txtNotes.Value = "" Then
+MsgBox "Please Type In Notes", vbExclamation, "Warning"
+Else
+'Find the last used row in Colum A & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "A").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 1) = txtTime1.Value
+'Find the last used row in Colum B & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "B").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 2) = txtDate1.Value
+'Find the last used row in Colum C & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "C").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 3) = txtNotes.Value
+'Clears text from all data entry points
+    txtTime1.Text = ""
+    txtNotes.Text = ""
+
+MsgBox "Information Sucsesfully Submitted", vbInformation, "Information"
+End If
+Sheets("sheet3").Cells(1, 1) = i
+
+End Sub
+
+Private Sub btnLogIn_Click()
+
+frmLogIn.Show
+
+End Sub
+
+Private Sub btnMember_Click()
+
+Dim LastRow As Long
+i = Sheets("sheet3").Cells(1, 1)
+i = i + 1
+Sheets("Onsite Members").Select
+
+
+'Seeing IF all the values have been entered
+If txtName.Value = "" Then
+MsgBox "Please Insert A Name", vbExclamation, "Warning"
+ElseIf txtCall.Value = "" Then
+txtCall.Value = "N/A"
+ElseIf txtRole.Value = "" Then
+MsgBox "Please State A Role"
+ElseIf txtInfo.Value = "" Then
+txtInfo.Value = "None Recorded"
+Else
+'Find the last used row in Colum A & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "A").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 1) = txtName.Value
+'Find the last used row in Colum B & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "B").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 2) = txtCall.Value
+'Find the last used row in Colum C & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "C").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 3) = txtRole.Value
+'Find the last used row in Colum D & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "D").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 4) = txtInfo.Value
+'Clears text from all data entry points
+    txtName.Text = ""
+    txtCall.Text = ""
+    txtRole.Text = ""
+    txtInfo.Text = ""
+    
+MsgBox "Information Sucsesfully Submitted", vbInformation, "Information"
+End If
+Sheets("sheet3").Cells(1, 1) = i
+
+End Sub
+
+Private Sub btnPatient_Click()
+
+Dim LastRow As Long
+i = Sheets("sheet3").Cells(1, 1)
+i = i + 1
+Sheets("Casulty Info").Select
+
+'Seeing IF all the values have been entered
+If lstCode.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf txtPCRF.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf txtTime2.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf txtDate2.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf txtLocation.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf txtAge.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf txtSex.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf txtIncident.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf txtTreatment.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf lstPublic.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf lstStaff.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf lstRIDDOR.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf lstDisposal.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf txtFirstAider.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf txtCall3.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+ElseIf txtNumber.Value = "" Then
+MsgBox "Please Enter ALL Values", vbCritical, "Warning"
+Else
+'Find the last used row in Colum A & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "A").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 1) = lstCode.Value
+'Find the last used row in Colum B & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "B").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 2) = txtPCRF.Value
+'Find the last used row in Colum C & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "C").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 3) = txtTime2.Value
+'Find the last used row in Colum D & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "D").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 4) = txtDate2.Value
+'Find the last used row in Colum E & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "E").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 5) = txtLocation.Value
+'Find the last used row in Colum F & insert text from TextBox2
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "F").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 6) = txtAge.Value
+'Find the last used row in Colum G & inserts data from ComboBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "G").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 7) = txtSex.Value
+    'Find the last used row in Colum H & inserts data from ComboBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "H").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 8) = txtIncident.Value
+'Find the last used row in Colum I & inserts data from ComboBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "I").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 9) = txtTreatment.Value
+'Find the last used row in Colum J & inserts data from ComboBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "J").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 10) = lstPublic.Value
+'Find the last used row in Colum K & inserts data from ComboBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "K").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 11) = lstStaff.Value
+'Find the last used row in Colum L & inserts data from ComboBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "L").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 12) = lstRIDDOR.Value
+'Find the last used row in Colum M & inserts data from ComboBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "M").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 13) = lstDisposal.Value
+'Find the last used row in Colum N & inserts data from ComboBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "N").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 14) = txtFirstAider.Value
+'Find the last used row in Colum O & inserts data from ComboBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "O").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 15) = txtCall3.Value
+'Find the last used row in Colum P & inserts data from ComboBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "P").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 16) = txtNumber.Value
+    
+'Clears text from all data entry points
+    lstCode.Value = ""
+    txtPCRF.Text = ""
+    txtTime2.Text = ""
+    txtDate2.Text = ""
+    txtLocation.Text = ""
+    txtAge.Text = ""
+    txtSex.Text = ""
+    txtIncident.Text = ""
+    txtTreatment.Text = ""
+    lstPublic.Value = ""
+    lstStaff.Value = ""
+    lstRIDDOR.Value = ""
+    lstDisposal.Value = ""
+    txtFirstAider.Text = ""
+    txtCall3.Text = ""
+    txtNumber.Text = ""
+
+    MsgBox "Information Sucsesfully Submitted", vbInformation, "Information"
+    End If
+Sheets("sheet3").Cells(1, 1) = i
+End Sub
+
+Private Sub btnPrint_Click()
+
+frmPrint.Show
+
+End Sub
+
+Private Sub btnSave_Click()
+
+    MsgBox "Please Remeber To Change The Save Location.", vbExclamation, "Save As"
+
+    Application.ExecuteExcel4Macro ("SAVE.AS?()")
+
+End Sub
+
+Private Sub btnSaveDatabase_Click()
+
+Application.ExecuteExcel4Macro ("SAVE.AS?()")
+
+End Sub
+
+Private Sub btnSheet1_Click()
+
+Sheets("Radio Log").Activate
+
+End Sub
+
+Private Sub btnSheet2_Click()
+
+Sheets("Notes").Activate
+  
+End Sub
+
+Private Sub btnSheet3_Click()
+
+Sheets("Onsite Members").Activate
+
+End Sub
+
+Private Sub btnSheet4_Click()
+
+Sheets("Casulty Info").Activate
+
+End Sub
+
+Private Sub btnClearDatabase_Click()
+
+frmClear.Show
+
+End Sub
+
+Private Sub btnClearTime_Click()
+
+txtTime.Text = ""
+txtDate.Text = ""
+txtFrom.Text = ""
+txtTo.Text = ""
+txtMsg.Text = ""
+txtTime.Text = ""
+lstRadio.Value = ""
+
+End Sub
+
+Private Sub btnCloseInputGUI_Click()
+
+frmClose.Show
+
+End Sub
+
+
+
+Private Sub btnClearMember_Click()
+
+txtName.Text = ""
+txtCall.Text = ""
+txtRole.Text = ""
+txtInfo.Text = ""
+
+End Sub
+
+Private Sub lstPublic_Change()
+
+End Sub
+
+Private Sub txtIncident_Change()
+
+    'Set the Multiline property to true.
+    txtIncident.MultiLine = True
+    ' Set WordWrap to true to allow text to wrap to the next line.
+    txtIncident.WordWrap = True
+
+End Sub
+
+Private Sub txtInfo_Change()
+
+    ' Set the Multiline property to true.
+    txtInfo.MultiLine = True
+    ' Set WordWrap to true to allow text to wrap to the next line.
+    txtInfo.WordWrap = True
+
+End Sub
+
+Private Sub txtMsg_Change()
+
+    ' Set the Multiline property to true.
+    txtMsg.MultiLine = True
+    ' Set WordWrap to true to allow text to wrap to the next line.
+    txtMsg.WordWrap = True
+
+End Sub
+
+Private Sub txtNotes_Change()
+
+    ' Set the Multiline property to true.
+    txtNotes.MultiLine = True
+    ' Set WordWrap to true to allow text to wrap to the next line.
+    txtNotes.WordWrap = True
+
+End Sub
+
+Private Sub txtTreatment_Change()
+
+    ' Set the Multiline property to true.
+    txtInfo.MultiLine = True
+    ' Set WordWrap to true to allow text to wrap to the next line.
+    txtInfo.WordWrap = True
+
+End Sub
+
+Sub UserForm_Initialize()
+
+  lstRadio.List = Array("", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16")
+  lstCode.List = Array("", "White", "Red", "Purple", "Black")
+  lstPublic.List = Array("", "No", "Yes")
+  lstStaff.List = Array("", "No", "Yes - Staff", "Yes - Contractor")
+  lstRIDDOR.List = Array("", "No", "Yes - Not Reported", "Yes - Reported")
+  lstDisposal.List = Array("", "Return To Event", "Return To Investigation", "Home", "Hospital - Own", "Hospital - Ambulance", "Other - State In Treatment")
+
+End Sub
+
+
+Private Sub btnClear_Click()
+
+frmClear.Show
+
+End Sub
+
+Private Sub btnInput_Click()
+
+Dim LastRow As Long
+i = Sheets("sheet3").Cells(1, 1)
+i = i + 1
+Sheets("Radio Log").Select
+
+'Seeing IF all the values have been entered
+If lstRadio.Value = "" Then
+MsgBox "Please Enter ALL Values", vbExclamation, "Warning"
+ElseIf txtDate.Value = "" Then
+txtDate.Text = "Not Recorded"
+ElseIf txtTime.Value = "" Then
+txtTime.Value = "Not Recorded"
+ElseIf txtFrom.Value = "" Then
+MsgBox "Please Enter ALL Values", vbExclamation, "Warning"
+ElseIf txtTo.Value = "" Then
+MsgBox "Please Enter ALL Values", vbExclamation, "Warning"
+ElseIf txtMsg.Value = "" Then
+MsgBox "Please Enter ALL Values", vbExclamation, "Warning"
+Else
+'Find the last used row in Colum A & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "A").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 1) = lstRadio.Value
+'Find the last used row in Colum B & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "B").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 2) = txtDate.Value
+'Find the last used row in Colum C & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "D").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 3) = txtTime.Value
+'Find the last used row in Colum D & insert text from TextBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "D").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 4) = txtFrom.Value
+'Find the last used row in Colum E & insert text from TextBox2
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "E").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 5) = txtTo.Value
+'Find the last used row in Colum F & inserts data from ComboBox1
+    With ActiveSheet
+        LastRow = .Cells(.Rows.Count, "F").End(xlUp).Row
+    End With
+    Cells(LastRow + 1, 6) = txtMsg.Value
+'Clears text from all data entry points
+    txtFrom.Text = ""
+    txtTo.Text = ""
+    txtMsg.Text = ""
+    txtTime.Text = ""
+    
+MsgBox "Information Sucsesfully Submitted", vbInformation, "Information"
+End If
+Sheets("sheet3").Cells(1, 1) = i
+
+End Sub
+
